@@ -1,0 +1,19 @@
+import numpy as np
+import os
+import cv2 as cv
+path="E:\images"
+fileNames=os.listdir(path=path)
+#images文件下第一张图片
+filePath=os.path.join(path,fileNames[2])
+img=cv.imread(filename=filePath,flags=cv.IMREAD_COLOR)
+
+cv.imshow("image",img)
+
+
+blured=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+blured=cv.GaussianBlur(blured,(9,9),-6)
+cv.imshow("Blurred",blured)
+
+canny=cv.Canny(blured,90,0)
+cv.imshow("Canny",canny)
+cv.waitKey(0)
